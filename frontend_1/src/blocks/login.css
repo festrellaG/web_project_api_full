@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-title {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-input {
+  width: 100%;
+  max-width: 358px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: black;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+  margin-top: 54px;
+  color: white;
+}
+
+.login-input:focus {
+  border-bottom: 2px solid grey;
+  outline: none;
+}
+
+.login-button {
+  width: 100%;
+  max-width: 358px;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 80px;
+}
+
+.login-button:hover {
+  opacity: 0.7;
+}
+
+.login-text_btn {
+  display: flex;
+  justify-content: right;
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 18px;
+  top: 50px;
+  right: 10px;
+  margin-top: 20px;
+}
+
+.login-text_btn:hover {
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 320px) and (max-width: 880px) {
+  .login-form {
+    width: 90%;
+  }
+
+  .login-button {
+    margin-top: 180px;
+  }
+}

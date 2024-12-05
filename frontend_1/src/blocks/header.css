@@ -1,0 +1,103 @@
+.header {
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 41px;
+  padding-bottom: 41px;
+  position: relative;
+  border-bottom: 1px solid grey;
+}
+
+.header__logo {
+  display: flex;
+  justify-content: left;
+  width: 173px;
+  height: 33px;
+}
+
+.header__item-divider {
+  flex-grow: 1;
+  border-bottom: 1px solid grey;
+  display: block;
+  padding-top: 41px;
+}
+
+.header__container {
+  text-align: right;
+  top: -20px;
+  width: 100%;
+  display: block;
+}
+
+.header_btn {
+  display: flex;
+  justify-content: right;
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+.header_btn:hover {
+  opacity: 0.7;
+}
+
+.header_btn-active {
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 18px;
+  top: 50px;
+  right: 10px;
+}
+
+.header_btn-active:hover {
+  opacity: 0.7;
+}
+
+.header__toggle-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 41px;
+  display: none;
+}
+
+.header__hamburger {
+  display: none;
+  text-align: right;
+  margin-top: -24px;
+}
+
+.header__toggle-icon {
+  width: 30px;
+}
+
+/*@media screen and (max-width: 320px) {*/
+@media screen and (min-width: 320px) and (max-width: 880px) {
+  .header {
+    max-width: 880x;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-top: 1px solid grey;
+  }
+
+  .header__toggle-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 41px;
+    padding-bottom: 20px;
+  }
+
+  .header__hamburger {
+    display: block;
+  }
+
+  .header__container {
+    display: none;
+  }
+}

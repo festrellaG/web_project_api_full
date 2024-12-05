@@ -1,0 +1,144 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  grid-column-gap: 17px;
+  grid-row-gap: 20px;
+  max-width: 880px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery__item {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  /*border: 1px solid #000;*/
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  width: 282px;
+  height: 361px;
+}
+
+.gallery__trash {
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.gallery__trash-hidden {
+  /*visibility: hidden;*/
+  display: none;
+}
+
+.gallery__trash:hover {
+  opacity: 0.5;
+}
+
+.gallery__image {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+}
+
+.gallery__title-item {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 80%;
+  line-height: 1.2;
+}
+
+.gallery__content-text {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+.gallery__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery__like_desactive {
+  width: 21px;
+  cursor: pointer;
+  background: url(../images/heartSignDesactive.svg) center no-repeat;
+  background-size: 100%;
+  border: none;
+  height: 21px;
+}
+
+.gallery__like_active {
+  width: 21px;
+  cursor: pointer;
+  background: url(../images/heartSignActive.svg) center no-repeat;
+  background-size: 100%;
+  border: none;
+  height: 21px;
+}
+
+.gallery__like_desactive:hover {
+  opacity: 0.5;
+}
+
+/*.gallery__like_active {
+  opacity: 1;
+  background: url(../images/heartSignActive.svg) center no-repeat;
+}*/
+
+.gallery__like-number {
+  font-size: 15px;
+  font-weight: normal;
+  color: #000;
+}
+
+/*@media screen and (max-width: 768px) {*/
+@media screen and (min-width: 320px) and (max-width: 880px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    grid-column-gap: 18px;
+    max-width: 700px;
+    margin-top: 36px;
+  }
+
+  .gallery__item {
+    width: 100%;
+  }
+
+  .gallery__image {
+    object-fit: fill;
+  }
+}
+
+/*@media screen and (max-width: 320px) {*/
+@media screen and (min-width: 320px) and (max-width: 880px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    grid-row-gap: 20px;
+    max-width: 282px;
+    margin-top: 36px;
+  }
+}
