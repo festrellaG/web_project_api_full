@@ -6,7 +6,12 @@ import { HttpStatus } from "./enums/http.js";
 import mongoose from "mongoose";
 import auth from "./middleware/auth.js";
 import cors from "cors";
+import { errors } from "celebrate";
+import { requestLogger, errorLogger } from "./middleware/logger.js";
+import dotenv from "dotenv";
 
+dotenv.config();
+console.log(process.env.NODE_ENV);
 const app = express();
 
 const { PORT = 3000 } = process.env;
@@ -20,8 +25,12 @@ mongoose
     console.log(err);
   });
 
+app.use(requestLogger);
 app.use(cors());
+app.options("*", cors());
+
 app.use(express.json());
+
 app.post("/signin", login);
 app.post("/signup", createUser);
 
@@ -29,6 +38,10 @@ app.use(auth);
 
 app.use("/users", userRoutes);
 app.use("/cards", cardRoutes);
+
+app.use(errorLogger);
+
+app.use(errors());
 
 app.use((err, req, res, next) => {
   const { statusCode = HttpStatus.INTERNAL_SERVER_ERROR, message } = err;

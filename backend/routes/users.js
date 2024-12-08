@@ -1,5 +1,5 @@
 import express from "express";
-const { celebrate, Joi } = require("celebrate");
+import { celebrate, Joi } from "celebrate";
 
 import {
   getUsers,
@@ -12,28 +12,45 @@ import {
 
 const router = express.Router();
 
-router.get(
-  "/",
-  celebrate({
-    body: Joi.object().keys({
-      name: Joi.string().required(),
-      about: Joi.string().required(),
-      avatar: Joi.string().required(),
-      email: Joi.string().required(),
-      password: Joi.string().required(),
-    }),
-  }),
-  getUsers
-);
+router.get("/", getUsers);
 
 router.get("/me", getUserMe);
 
 router.get("/:id", getUserById);
 
-router.post("/", createUser);
+router.post(
+  "/",
+  celebrate({
+    body: Joi.object().keys({
+      name: Joi.string().min(2).max(30).optional(),
+      about: Joi.string().min(2).max(30).optional(),
+      avatar: Joi.string().uri().optional(),
+      email: Joi.string().email().required(),
+      password: Joi.string().min(8).required(),
+    }),
+  }),
+  createUser
+);
 
-router.patch("/me", updateProfile);
+router.patch(
+  "/me",
+  celebrate({
+    body: Joi.object().keys({
+      name: Joi.string().min(2).max(30).optional(),
+      about: Joi.string().min(2).max(30).optional(),
+    }),
+  }),
+  updateProfile
+);
 
-router.patch("/me/avatar", updateAvatar);
+router.patch(
+  "/me/avatar",
+  celebrate({
+    body: Joi.object().keys({
+      avatar: Joi.string().uri().optional(),
+    }),
+  }),
+  updateAvatar
+);
 
 export default router;

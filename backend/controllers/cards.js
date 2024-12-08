@@ -1,9 +1,7 @@
 import Card from "../models/card.js";
 import { HttpStatus } from "../enums/http.js";
 import BadRequestError from "../errors/bad-request-error.js";
-import ForbiddenError from "../errors/forbidden-error.js";
 import NotFoundError from "../errors/not-found-error.js";
-import UnauthorizedError from "../errors/unauthorized-error.js";
 
 export async function createCard(req, res) {
   const { name, link } = req.body;
@@ -20,8 +18,6 @@ export async function createCard(req, res) {
 
     res.status(HttpStatus.CREATED).send(loadCard);
   } catch (error) {
-    /*console.error(error);
-    res.status(HttpStatus.BAD_REQUEST).send({ error: error.message });*/
     next(new BadRequestError(error.message));
   }
 }
@@ -31,10 +27,6 @@ export async function getCards(req, res) {
     const cards = await Card.find({}).populate("owner");
     res.status(HttpStatus.OK).send(cards);
   } catch (error) {
-    /*console.error(error);
-    res
-      .status(HttpStatus.INTERNAL_SERVER_ERROR)
-      .send({ message: error.message });*/
     next(error);
   }
 }
@@ -46,18 +38,11 @@ export async function deleteCardById(req, res) {
     const deletedCard = await Card.findByIdAndDelete(id);
 
     if (!deletedCard) {
-      /*return res
-        .status(HttpStatus.NOT_FOUND)
-        .send({ message: "Card not found" });*/
       return next(new NotFoundError("Card not found"));
     }
 
     res.status(HttpStatus.OK).send({ message: "Card deleted successfully" });
   } catch (error) {
-    /*console.error(error);
-    res
-      .status(HttpStatus.INTERNAL_SERVER_ERROR)
-      .send({ message: error.message });*/
     next(error);
   }
 }
@@ -79,12 +64,8 @@ export async function cardLikes(req, res) {
   } catch (error) {
     console.error(error);
     if (error.name === "DocumentNotFoundError") {
-      /*res.status(HttpStatus.NOT_FOUND).send({ message: "Card not found" });*/
       next(new NotFoundError("Card not found"));
     } else {
-      /*res
-        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .send({ message: error.message });*/
       next(error);
     }
   }
@@ -107,12 +88,8 @@ export async function cardDislikes(req, res) {
   } catch (error) {
     console.error(error);
     if (error.name === "DocumentNotFoundError") {
-      //res.status(HttpStatus.NOT_FOUND).send({ message: "Card not found" });
       next(new NotFoundError("Card not found"));
     } else {
-      /*res
-        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .send({ message: error.message });*/
       next(error);
     }
   }
