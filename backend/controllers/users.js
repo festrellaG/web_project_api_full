@@ -6,7 +6,7 @@ import BadRequestError from "../errors/bad-request-error.js";
 import NotFoundError from "../errors/not-found-error.js";
 import UnauthorizedError from "../errors/unauthorized-error.js";
 
-export async function getUsers(req, res) {
+export async function getUsers(req, res, next) {
   try {
     const users = await User.find({});
     res.status(HttpStatus.OK).send(users);
@@ -15,7 +15,7 @@ export async function getUsers(req, res) {
   }
 }
 
-export async function getUserById(req, res) {
+export async function getUserById(req, res, next) {
   const { id } = req.params;
 
   try {
@@ -32,7 +32,7 @@ export async function getUserById(req, res) {
   }
 }
 
-export async function createUser(req, res) {
+export async function createUser(req, res, next) {
   const { name, about, avatar, email, password } = req.body;
 
   try {
@@ -51,7 +51,7 @@ export async function createUser(req, res) {
   }
 }
 
-export async function updateProfile(req, res) {
+export async function updateProfile(req, res, next) {
   const { name, about } = req.body;
   const id = req.user._id;
   try {
@@ -72,7 +72,7 @@ export async function updateProfile(req, res) {
   }
 }
 
-export async function updateAvatar(req, res) {
+export async function updateAvatar(req, res, next) {
   const { avatar } = req.body;
   const id = req.user._id;
   try {
@@ -93,7 +93,7 @@ export async function updateAvatar(req, res) {
   }
 }
 
-export async function login(req, res) {
+export async function login(req, res, next) {
   const { email, password } = req.body;
 
   return User.findUserByCredentials(email, password)
@@ -102,12 +102,12 @@ export async function login(req, res) {
       res.status(HttpStatus.OK).send({ token });
     })
     .catch((err) => {
-      throw new UnauthorizedError(err.message);
+      next(new UnauthorizedError(err.message));
     })
     .catch((err) => next(err));
 }
 
-export async function getUserMe(req, res) {
+export async function getUserMe(req, res, next) {
   const { _id } = req.user;
 
   try {

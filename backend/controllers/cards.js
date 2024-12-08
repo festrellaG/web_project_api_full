@@ -3,7 +3,7 @@ import { HttpStatus } from "../enums/http.js";
 import BadRequestError from "../errors/bad-request-error.js";
 import NotFoundError from "../errors/not-found-error.js";
 
-export async function createCard(req, res) {
+export async function createCard(req, res, next) {
   const { name, link } = req.body;
   const owner = req.user._id;
 
@@ -22,7 +22,7 @@ export async function createCard(req, res) {
   }
 }
 
-export async function getCards(req, res) {
+export async function getCards(req, res, next) {
   try {
     const cards = await Card.find({}).populate("owner");
     res.status(HttpStatus.OK).send(cards);
@@ -31,7 +31,7 @@ export async function getCards(req, res) {
   }
 }
 
-export async function deleteCardById(req, res) {
+export async function deleteCardById(req, res, next) {
   const { id } = req.params;
 
   try {
@@ -47,7 +47,7 @@ export async function deleteCardById(req, res) {
   }
 }
 
-export async function cardLikes(req, res) {
+export async function cardLikes(req, res, next) {
   const { cardId } = req.params;
   const userId = req.user._id;
 
@@ -71,7 +71,7 @@ export async function cardLikes(req, res) {
   }
 }
 
-export async function cardDislikes(req, res) {
+export async function cardDislikes(req, res, next) {
   const { cardId } = req.params;
   const userId = req.user._id;
 
