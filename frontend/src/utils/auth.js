@@ -1,5 +1,5 @@
-//const BASE_URL = "https://tripleten.desarrollointerno.com";
-const BASE_URL = "http://localhost:3000";
+//const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://api.tripletenfes.nex.sh";
 //registro de usuarios
 export async function signup(email, password) {
   const response = await fetch(`${BASE_URL}/signup`, {

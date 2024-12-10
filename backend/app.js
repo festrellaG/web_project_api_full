@@ -11,7 +11,7 @@ import { requestLogger, errorLogger } from "./middleware/logger.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-console.log(process.env.NODE_ENV);
+
 const app = express();
 
 const allowedCors = [
@@ -20,6 +20,7 @@ const allowedCors = [
   "https://www.tripletenfes.nex.sh",
   "http://www.tripletenfes.nex.sh",
   "http://localhost:3000",
+  "http://localhost:3001",
 ];
 
 app.use(function (req, res, next) {

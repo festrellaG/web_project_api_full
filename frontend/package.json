@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "deploy": "npm run build &&  scp -r -i ./build/* peyote0666@34.30.73.52:/home/peyote0666/frontend"
+    "deploy": "npm run build &&  scp -r -i ./build/* peyote0666@tripletenfes.nex.sh:/home/peyote0666/frontend"
   },
   "eslintConfig": {
     "extends": [

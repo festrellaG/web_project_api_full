@@ -32,7 +32,6 @@ export default function Main(props) {
             alt="Foto de perfil de un usuario que sube contenido de viajes"
             className="profile__face-image"
             id="image-profile"
-            style={{ backgroundImage: `url(${currentUser.avatar})` }}
           />
           <div
             className="profile__content-edit"

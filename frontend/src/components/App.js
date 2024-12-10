@@ -181,6 +181,7 @@ function App() {
         )}
         <Header
           onLogout={() => {
+            setLoggedIn(false);
             setCurrentUser({});
           }}
         />
