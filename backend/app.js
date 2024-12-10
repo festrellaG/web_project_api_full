@@ -14,6 +14,23 @@ dotenv.config();
 console.log(process.env.NODE_ENV);
 const app = express();
 
+const allowedCors = [
+  "https://tripletenfes.nex.sh",
+  "http://tripletenfes.nex.sh",
+  "https://www.tripletenfes.nex.sh",
+  "http://www.tripletenfes.nex.sh",
+  "http://localhost:3000",
+];
+
+app.use(function (req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
+  next();
+});
+
 const { PORT = 3000 } = process.env;
 
 mongoose
@@ -30,6 +47,12 @@ app.use(cors());
 app.options("*", cors());
 
 app.use(express.json());
+
+app.get("/crash-test", () => {
+  setTimeout(() => {
+    throw new Error("El servidor va a caer");
+  }, 0);
+});
 
 app.post("/signin", login);
 app.post("/signup", createUser);
