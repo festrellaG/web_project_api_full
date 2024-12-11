@@ -6,6 +6,7 @@ class Api {
   handlePromise(res) {
     if (res.ok) {
       let json = res.json();
+      console.log("res json: ", json);
       return json;
     }
     // si el servidor devuelve un error, rechaza el promise
@@ -152,7 +153,8 @@ class Api {
       });
   }
 }
-
+//https://api.tripletenfes.nex.sh
+//http://localhost:3000
 const api = new Api({
   baseUrl: "https://api.tripletenfes.nex.sh",
 });
