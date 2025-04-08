@@ -36,6 +36,9 @@ Este proyecto final tiene como resultado el mostrar una página web con las cara
 4. para descargar dependencias: npm install
 5. para ejecutar: npm dev / npm run
 6. para construir carpeta dist: npm run build
+7. Te situas en la carpeta de backend
+8. Para descargar dependencias: npm install
+9. Para ejecutar: npm start
 
 # Imágenes
 
